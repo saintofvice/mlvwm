@@ -1,7 +1,9 @@
 0.9.4 -> 0.9.x
-Improved debug logging of user locale & missing font/encoding
-Added fallback XLFD font in case user specified font is missing
-For performance reasons, removed missing font errors in menu bar while loading
+Improved debug logging of user locale & missing font/encoding (Issue #30)
+Added fallback XLFD font in case user specified font is missing (Issue #30)
+For performance reasons, removed missing font errors in menu bar while loading (Issue #30)
+Corrected 'flush' misspelling to 'flash', including new FlashMenu configuration (Issue #46)
+Preserved misspelled FlushMenu configuration, but documented as deprecated (Issue #46)
 
 0.9.3 -> 0.9.4
 Improved config command parsing in ReadConfigFile()
