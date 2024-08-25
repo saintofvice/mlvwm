@@ -1,4 +1,9 @@
-0.9.2 -> 0.9.4
+0.9.4 -> 0.9.x
+Improved debug logging of user locale & missing font/encoding
+Added fallback XLFD font in case user specified font is missing
+For performance reasons, removed missing font errors in menu bar while loading
+
+0.9.3 -> 0.9.4
 Improved config command parsing in ReadConfigFile()
 Add SwallowFocusClick configuration command
 Fixed handle_configure_request() to support moving windows
