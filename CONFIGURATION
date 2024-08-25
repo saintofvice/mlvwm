@@ -131,7 +131,7 @@ The item which can be set by the initialization file is as the next.
      ScrollBarWidth <n>
        The variable scroll window is set <n> and defaults to 19 if
        unspecified.
-     FlushMenu
+     FlashMenu
        The flashing interval of the menu and number of times are set. An
        argument can't be omitted in the flashing interval and the number
        of times. The flashing interval is 100, flashing number of

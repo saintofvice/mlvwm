@@ -104,7 +104,7 @@ Description
   IconifyShade    WindowShade されたものを Inocify とみなす。
   IconifyHide     HideWindow されたものを Iconify とみなす。
   ScrollBarWidth  スクロールバーの表示の幅を変更する。デフォルトは19。
-  FlushMenu       メニューの点滅間隔と回数を指定。引数は、点滅間隔と回
+  FlashMenu       メニューの点滅間隔と回数を指定。引数は、点滅間隔と回
                   数で、省略は不可能。デフォルトは、点滅間隔が 100, 
                   点滅回数が 2。点滅間隔は ms で指定。
   IconPath        アイコンパスを指定します。複数指定する時は `:' で区切っ

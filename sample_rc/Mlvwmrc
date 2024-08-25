@@ -15,8 +15,8 @@ StickyShade
 ## when window is not mappted.
 StickyHide
 
-## Interval and number of flush at flushing menu
-#FlushMenu 100 2
+## Interval and number of flashes at flashing menu
+#FlashMenu 100 2
 
 ## Map iconify window as shade 
 IconifyShade
