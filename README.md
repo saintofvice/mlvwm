@@ -52,6 +52,13 @@ Build & installation currently still requires [imake](https://en.wikipedia.org/w
 Native packages are provided on some operating systems, including:
 
 * OpenBSD: `pkg_add mlvwm`
+* NetBSD: `pkg_add mlvwm`
+* Arch Linux: [Arch User Repository (AUR)](https://wiki.archlinux.org/title/Arch_User_Repository)
+* NixOS
+
+For an up-to-date list of packaged versions, see [mlvwm on Repology](https://repology.org/project/mlvwm/versions).
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/mlvwm.svg)](https://repology.org/project/mlvwm/versions)
 
 ## CONFIGURATION
 
