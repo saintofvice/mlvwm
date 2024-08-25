@@ -461,11 +461,11 @@ void ExecMenu( MenuLabel *m, int selected )
 	if( !(tmp_item->mode&SELECTON) || !(tmp_item->action ))
 		return;
 
-	for( lp=0; lp<Scr.flush_times; lp++ ){
+	for( lp=0; lp<Scr.flash_times; lp++ ){
 		DrawMenuItem( m, selected, False );		XFlush( dpy );
-		sleep_a_little( Scr.flush_time );
+		sleep_a_little( Scr.flash_time );
 		DrawMenuItem( m, selected, True );		XFlush( dpy );
-		sleep_a_little( Scr.flush_time );
+		sleep_a_little( Scr.flash_time );
 	}
 
 	DrawMenuItem( m, selected, True );

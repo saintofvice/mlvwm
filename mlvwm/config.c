@@ -477,12 +477,18 @@ void SetBarWidth( char *line, FILE *fp )
 		Scr.bar_width = bar_width;
 }
 
+void SetMenuFlash( char *line, FILE *fp )
+{
+	if( sscanf( line, "FlashMenu%d%d", &(Scr.flash_time), &(Scr.flash_times) ) != 2 )
+		DrawErrMsgOnMenu( "You must set FlashMenu", " length and times" );
+	Scr.flash_time *= 1000;
+}
+
 void SetMenuFlush( char *line, FILE *fp )
 {
-	if( sscanf( line, "FlushMenu%d%d", &(Scr.flush_time), &(Scr.flush_times) )
-		!=2 )
+	if( sscanf( line, "FlushMenu%d%d", &(Scr.flash_time), &(Scr.flash_times) ) != 2 )
 		DrawErrMsgOnMenu( "You must set FlushMenu", " length and times" );
-	Scr.flush_time *= 1000;
+	Scr.flash_time *= 1000;
 }
 
 void SetSystem8( char *line, FILE *fp )
@@ -741,6 +747,7 @@ config_func main_config[]={
 	{ "DoubleClickTime", SetDoubleClickTime },
 	{ "DisplayDeskNumber", SetDisplayDeskNum },
     { "EdgeResistance",	SetEdgeResist },
+	{ "FlashMenu", SetMenuFlash },
 	{ "FlushMenu", SetMenuFlush },
 	{ "FollowToMouse", SetFollowToMouse },
 	{ "Compatible", SetCompatible },

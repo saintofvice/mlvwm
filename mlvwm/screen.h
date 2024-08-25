@@ -103,8 +103,8 @@ typedef struct ScreenInfo
 	unsigned int flags;
 	int double_click_time;
 	int bar_width;
-	int flush_time;
-	int flush_times;
+	int flash_time;
+	int flash_times;
 	int resist_x, resist_y;
 	int zoom_wait;
 

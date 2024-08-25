@@ -190,8 +190,8 @@ void InitScrParams( void )
 	Scr.ShortCutRoot = NULL;
 	Scr.double_click_time = 300;
 	Scr.bar_width = 16;
-	Scr.flush_time = 100000;
-	Scr.flush_times = 2;
+	Scr.flash_time = 100000;
+	Scr.flash_times = 2;
 	Scr.zoom_wait = 10000;
 	Scr.IconPath = NULL;
 	Scr.BalloonOffStr = NULL;

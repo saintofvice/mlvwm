@@ -178,9 +178,13 @@ HideWindow is regarded as Iconify.
 .IP "\fBScrollBarWidth\fP \fIn\fP
 The variable scroll window is set \fIn\fP and defaults to 16 if
 unspecified.
-.IP "\fBFlushMenu\fP \fIspeed\fP \fIflashes\fP"
+.IP "\fBFlashMenu\fP \fIspeed\fP \fIflashes\fP"
 Determines how fast the flashes are when you choose an option from a menu,
 as well as how many times it does so.
+.IP "\fBFlushMenu\fP \fIspeed\fP \fIflashes\fP"
+Determines how fast the flashes are when you choose an option from a menu,
+as well as how many times it does so. This is deprecated and will be
+removed in a future version, so please use \fBFlashMenu\fP instead.
 .IP "\fBIconPath\fP \fIpath\fP"
 Specify the path \fImlvwm\fP is to search in order to find it's icons.
 Separate directories should be separated with a : and listed in the order
