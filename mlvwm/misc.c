@@ -148,13 +148,14 @@ Icon *ReadIcon( char *fn, Icon *icon, Bool err )
 	Icon *newicon;
 	char *path;
 
-	if( icon==NULL )		newicon = (Icon *)calloc( 1, sizeof(Icon) );
-	else		newicon = icon;
 	if((path = LookUpFiles( Scr.IconPath, fn, R_OK ))==NULL ){
 		if( err )
 			DrawErrMsgOnMenu( "Can't Find file ", fn );
 		return NULL;
 	}
+
+	if( icon==NULL )		newicon = (Icon *)calloc( 1, sizeof(Icon) );
+	else		newicon = icon;
 	XGetWindowAttributes(dpy,Scr.Root,&root_attr); 
 	attr.colormap = root_attr.colormap;
 	attr.closeness = 40000; /* Allow for "similar" colors */
