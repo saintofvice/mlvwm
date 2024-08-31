@@ -113,14 +113,12 @@ void SetUpFrame( MlvwmWindow *t, int x, int y, int w, int h, Bool sendEvent )
 {
 	XWindowChanges xwcv;
 	unsigned long xwcm;
-	int title_height, sbar_v, sbar_h, resize_r;
+	int title_height, sbar_v, sbar_h;
 	int sbar_vh, sbar_hw;
 
 	title_height = t->flags & TITLE ? TITLE_HEIGHT : 0;
 	sbar_v = t->flags & SBARV ? SBAR_WH : 0;
 	sbar_h = t->flags & SBARH ? SBAR_WH : 0;
-	resize_r = t->flags & RESIZER ?
-		SBAR_WH : ( sbar_v!=0 && sbar_h!=0 ? SBAR_WH : 0 );
 
 	if( t->flags&TITLE )
 		XResizeWindow( dpy, t->title_w,
@@ -600,7 +598,6 @@ void DrawSbarAnk( MlvwmWindow *t, int context, Bool on_off )
 			}
 			attributes.background_pixel = xgcv.foreground;
 			attributes.cursor = Scr.MlvwmCursors[DEFAULT];
-			valuemask = CWBackPixel | CWCursor;
 
 			valuemask = CWBackPixel;
 			XChangeWindowAttributes( dpy, win, valuemask, &attributes );
@@ -712,7 +709,6 @@ void DrawSbarArrow( MlvwmWindow *t, int context, Bool on_off )
 		DrawArrow( win, context, fill, outline);
 	}
 	else{
-		mask = GCForeground;
 		attributes.background_pixel = WhitePixel( dpy, Scr.screen );
 		attributes.cursor = Scr.MlvwmCursors[DEFAULT];
 		valuemask = CWBackPixel | CWCursor;
@@ -820,7 +816,6 @@ void DrawSbarBar( MlvwmWindow *t, int context, Bool on_off )
 		}
 	}
 	else{
-		mask = GCForeground;
 		attributes.background_pixel = WhitePixel( dpy, Scr.screen );
 		attributes.cursor = Scr.MlvwmCursors[DEFAULT];
 		valuemask = CWBackPixel | CWCursor;

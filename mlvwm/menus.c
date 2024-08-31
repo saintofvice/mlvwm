@@ -26,7 +26,7 @@
 
 void RedrawMenu( MenuLabel *m, Bool onoroff )
 {
-	GC tmp_f_GC, tmp_b_GC;
+	GC tmp_f_GC;
 	int width, offset;
 	unsigned long gcm;
 	XGCValues gcv;
@@ -60,14 +60,10 @@ void RedrawMenu( MenuLabel *m, Bool onoroff )
 		StrWidthHeight( MENUBARFONT, &width, NULL, &offset,
 					   m->LabelStr, strlen(m->LabelStr));
 
-	if( onoroff ){
+	if( onoroff )
 		tmp_f_GC = Scr.WhiteGC;
-		tmp_b_GC = Scr.BlackGC;
-	}
-	else{
+	else
 		tmp_f_GC = Scr.BlackGC;
-		tmp_b_GC = Scr.WhiteGC;
-	}
 	if( !(m->flags&ACTIVE) && Scr.d_depth>1 )
 		tmp_f_GC = Scr.Gray3GC;
 	if( !m->xpm ){
@@ -1222,7 +1218,7 @@ void SetMenu( char *line, FILE *fp )
 
 void SetMenuBar( char *line, FILE *fp )
 {
-	char str[256], *top, tmp[8];
+	char str[256], tmp[8];
 	Menu *tmp_m, *last_m;
 	MenuLink **tmp_link;
 	MenuLabel *tmp_l;
@@ -1236,13 +1232,9 @@ void SetMenuBar( char *line, FILE *fp )
 			last_m=last_m->next );
 		last_m->next = tmp_m;
 	}
-	if( (top = strchr( line, ',' ))!=NULL )
-		*top = '\0';
 	tmp_m->name = calloc( strlen(line)-7, 1 );
 	sscanf( line, "%s%s", tmp, tmp_m->name );
 
-	if( top )		top++;
-	else		top = line+strlen( line );
 	tmp_link = &tmp_m->link;
 
 	for( tmp_l=Scr.MenuLabelRoot; tmp_l; tmp_l=tmp_l->next ){

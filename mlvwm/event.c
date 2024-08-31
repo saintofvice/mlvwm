@@ -1198,7 +1198,7 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 	unsigned int JunkMask;
 	int *check_axis, *anker_check, timeout=1;
 	struct timeval tp, current;
-	Window JunkRoot, JunkChild, bar, anker;
+	Window JunkRoot, JunkChild, anker;
 	XWindowAttributes winattrs, winattrs_a;
 	int ignore=1;
 	XEvent ev;
@@ -1216,7 +1216,6 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 			tmp_win->scroll_h[pushd]!=pressedwin; pushd++ );
 		if( pushd==1 )	direction = C_SBAR_LEFT;
 		if( pushd==2 )	direction = C_SBAR_RIGHT;
-		bar = tmp_win->scroll_h[0];
 		if (tmp_win->hints.flags & PResizeInc)
 			inc = tmp_win->hints.width_inc;
 		inc_view = winattrs.width;
@@ -1232,7 +1231,6 @@ void PressSbar( Bool isHbar, Window pressedwin, MlvwmWindow *tmp_win )
 			tmp_win->scroll_v[pushd]!=pressedwin; pushd++ );
 		if( pushd==1 )	direction = C_SBAR_UP;
 		if( pushd==2 )	direction = C_SBAR_DOWN;
-		bar = tmp_win->scroll_v[0];
 		if( tmp_win->hints.flags & PResizeInc )
 			inc = tmp_win->hints.height_inc;
 		inc_view = winattrs.height;
