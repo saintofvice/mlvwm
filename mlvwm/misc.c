@@ -144,7 +144,7 @@ Icon *ReadIcon( char *fn, Icon *icon, Bool err )
 	XWindowAttributes root_attr;
 	XpmAttributes attr;
 	int x, y, xhot, yhot;
-	Pixmap bitmap;
+	Pixmap bitmap = (Pixmap)NULL;
 	Icon *newicon;
 	char *path;
 
@@ -177,7 +177,7 @@ Icon *ReadIcon( char *fn, Icon *icon, Bool err )
 			newicon->height = attr.height;
 			newicon->kind = PIXMAP;
 		}
-		else{
+		else if (bitmap) {
 			newicon->icon = XCreatePixmap( dpy, Scr.Root,
 										  newicon->width, newicon->height,
 										  Scr.d_depth );
