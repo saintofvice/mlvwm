@@ -516,11 +516,11 @@ Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 		case EnterNotify:
 			if( XFindContext( dpy, Event.xcrossing.window, MenuContext,
 							 (caddr_t *)&tmp_menu )!=XCNOENT ){
-				if( tmp_menu==mapped ){
+				if( mapped && (mapped == tmp_menu) ) {
 					finishall = ChoiseMenu( mapped, entwin, ignore, ChildSide );
-					if( *entwin!=m->PullWin )	isEnd = True;
+					if ( entwin && (*entwin != m->PullWin) )	isEnd = True;
 				}
-				else if( tmp_menu!=m || Event.xcrossing.window==m->LabelWin ){
+				else if( m && ((tmp_menu != m) || (Event.xcrossing.window == m->LabelWin)) ) {
 					isEnd = True;
 					*entwin = Event.xcrossing.window;
 					if( m->SelectNum != -1 ){
@@ -548,6 +548,7 @@ Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 			else	ignore++;
 			break;
 		case MotionNotify:
+			if ( !m ) break;
 			if(isRect( Event.xbutton.x, Event.xbutton.y, 0, 0,
 						m->MenuWidth, m->MenuHeight ) &&
 					Event.xany.window == m->PullWin ){
@@ -589,7 +590,7 @@ Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 		UnmapMenu( mapped, UNMAP_ALL );
 		DrawMenuItemAll( m );
 	}
-	if( Release && m->SelectNum!=-1 ){
+	if ( Release && m && (m->SelectNum != -1) ) {
 		UnGrabEvent();
 		ExecMenu( m, m->SelectNum );
 		if( !GrabEvent( DEFAULT ) ){
@@ -608,7 +609,7 @@ void press_menu( MenuLabel *m )
 	MenuLabel *mapped, *tmp_menu;
 	int x, y, JunkX, JunkY;
 	unsigned int JunkMask;
-	Window JunkRoot, JunkChild, entwin;
+	Window JunkRoot, JunkChild, entwin = 0;
 	int ignore;
 
 	if( m!=NULL )
@@ -644,7 +645,7 @@ void press_menu( MenuLabel *m )
 			if( XFindContext( dpy, Event.xcrossing.window,
 							 MenuContext, (caddr_t *)&tmp_menu )
 			   !=XCNOENT ){
-				if( mapped != tmp_menu ){
+				if ( !mapped || (mapped && (mapped != tmp_menu)) ) {
 					if( mapped )	UnmapMenu( mapped, UNMAP_ALL );
 					mapped = tmp_menu;
 					Side = MapMenu( mapped, mapped->LabelX,
@@ -653,7 +654,7 @@ void press_menu( MenuLabel *m )
 				}
 				else if( Event.xcrossing.window==mapped->PullWin ){
 					isEnd = ChoiseMenu( mapped, &entwin, ignore, Side );
-					if( entwin == Scr.MenuBar ){
+					if ( entwin && (entwin == Scr.MenuBar) ) {
 						UnmapMenu( mapped, UNMAP_ALL );
 						mapped = NULL;
 					}
