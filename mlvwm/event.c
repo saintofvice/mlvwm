@@ -241,10 +241,10 @@ MlvwmWindow *NextActiveWin( MlvwmWindow *t )
 	int lp;
 	Window parent, *children;
 	unsigned nchildren;
-	MlvwmWindow *NextActive;
+	MlvwmWindow *NextActive = NULL;
 
 	XQueryTree( dpy, Scr.Root, &Scr.Root, &parent, &children, &nchildren );
-	for( lp=nchildren-1; lp>-1; lp-- ){
+	for ( lp = nchildren - 1; lp > -1; lp-- ) {
 		if( XFindContext( dpy, children[lp], MlvwmContext,
 						 (caddr_t *)&NextActive )
 		   !=XCNOENT &&
@@ -257,7 +257,7 @@ MlvwmWindow *NextActiveWin( MlvwmWindow *t )
 		   NextActive->Desk==Scr.currentdesk)
 			break;
 	}
-	if( lp==-1 )
+	if ( lp == -1 )
 		NextActive = NULL;
 	XFree( children );
 	return NextActive;
