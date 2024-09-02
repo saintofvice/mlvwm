@@ -176,7 +176,7 @@ void InitScrParams( void )
 	Scr.MlvwmRoot.w = Scr.Root;
 	Scr.MlvwmRoot.prev = NULL;
 	Scr.MlvwmRoot.next = NULL;
-	Scr.LastActive = calloc( 1, sizeof(MlvwmWindow));
+	Scr.LastActive = calloc( 1, sizeof(MlvwmWindow*));
 	Scr.MyDisplayWidth = DisplayWidth( dpy, Scr.screen );
 	Scr.MyDisplayHeight = DisplayHeight( dpy, Scr.screen );
 	Scr.MenuLabelRoot = NULL;

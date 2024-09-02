@@ -409,7 +409,7 @@ void SetDeskTopNum( char *line, FILE *fp )
 	AddMenuItem( &(Scr.IconMenu), label, action, NULL, NULL, NULL, STRGRAY );
 	if( Scr.LastActive!=NULL )
 		free( Scr.LastActive );
-	Scr.LastActive = calloc( Scr.n_desktop, sizeof(MlvwmWindow));
+	Scr.LastActive = calloc( Scr.n_desktop, sizeof(MlvwmWindow*));
 }
 
 void SetRstPrevState( char *line, FILE *fp )
