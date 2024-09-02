@@ -144,7 +144,7 @@ Icon *ReadIcon( char *fn, Icon *icon, Bool err )
 	XWindowAttributes root_attr;
 	XpmAttributes attr;
 	int x, y, xhot, yhot;
-	Pixmap bitmap = (Pixmap)NULL;
+	Pixmap bitmap = 0;
 	Icon *newicon;
 	char *path;
 
@@ -262,10 +262,11 @@ void RaiseMlvwmWindow( MlvwmWindow *win )
 		if( tmp!=win && tmp->flags&ONTOP )
 			wins[set++] = tmp->frame;
 	}
-	for( tmp = lastwin; tmp!=&Scr.MlvwmRoot; tmp=tmp->prev )
-		if( tmp->flags&TRANSIENT && tmp->transientfor==win->w && tmp!=win 
-		   && !(tmp->flags&ONTOP))
+	for ( tmp = lastwin; (tmp != NULL) && (tmp != &Scr.MlvwmRoot); tmp = tmp->prev ) {
+		if( tmp->flags&TRANSIENT && (tmp->transientfor == win->w) && (tmp != win) 
+		   && !(tmp->flags&ONTOP) )
 			wins[set++] = tmp->frame;
+	}
 	if( count!=set )
 		wins[set++] = win->frame;
 
