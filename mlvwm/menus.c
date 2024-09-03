@@ -111,8 +111,6 @@ void RedrawMenu( MenuLabel *m, Bool onoroff )
 
 void RedrawMenuBar( void )
 {
-	int lp;
-
 	if( Scr.flags&SYSTEM8 )
 		DrawShadowBox( 0, 0, Scr.MyDisplayWidth, MENUB_H, Scr.MenuBar, 1,
 					  Scr.WhiteGC, Scr.Gray1GC, SHADOW_ALL );
