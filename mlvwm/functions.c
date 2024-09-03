@@ -125,7 +125,7 @@ void MapIt( MlvwmWindow *t )
 	}
 }
 
-MlvwmWindow *ChoiseWindow( XEvent *ev, int cursor )
+MlvwmWindow *ChooseWindow( XEvent *ev, int cursor )
 {
 	Bool loop=True;
 	MlvwmWindow *tmp_win;
@@ -160,7 +160,7 @@ void MoveWindowFunction( char *action )
 	MlvwmWindow *tmp_win;
 	XEvent ev;
 
-	tmp_win = ChoiseWindow( &ev, MOVE );
+	tmp_win = ChooseWindow( &ev, MOVE );
 	if( !tmp_win ){
 		XBell( dpy, 30 );
 		return;
@@ -173,7 +173,7 @@ void ResizeWindowFunction( char *action )
 	MlvwmWindow *tmp_win;
 	XEvent ev;
 
-	tmp_win = ChoiseWindow( &ev, MOVE );
+	tmp_win = ChooseWindow( &ev, MOVE );
 	if( !tmp_win ){
 		XBell( dpy, 30 );
 		return;
@@ -190,7 +190,7 @@ void KillWindowFunction( char *action )
 	Window JunkRoot;
 	unsigned int JunkWidth, JunkHeight, JunkBW, JunkDepth;
 
-	tmp_win = ChoiseWindow( &ev, DESTROY );
+	tmp_win = ChooseWindow( &ev, DESTROY );
 	if( !tmp_win ){
 		XBell( dpy, 30 );
 		return;
@@ -209,7 +209,7 @@ void ToggleScrollFunction( char *action )
 	MlvwmWindow *tmp_win;
 	XEvent ev;
 
-	tmp_win = ChoiseWindow( &ev, SELECT );
+	tmp_win = ChooseWindow( &ev, SELECT );
 	if( !tmp_win ){
 		XBell( dpy, 30 );
 		return;

@@ -492,7 +492,7 @@ void DrawMenuItemAll( MenuLabel *ml )
 	}
 }
 
-Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
+Bool ChooseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 {
 	Bool isEnd = False, finishall=False, Release=False, ChildSide=True;
 	XEvent Event;
@@ -515,7 +515,7 @@ Bool ChoiseMenu( MenuLabel *m, Window *entwin, int ignore, Bool side )
 			if( XFindContext( dpy, Event.xcrossing.window, MenuContext,
 							 (caddr_t *)&tmp_menu )!=XCNOENT ){
 				if( mapped && (mapped == tmp_menu) ) {
-					finishall = ChoiseMenu( mapped, entwin, ignore, ChildSide );
+					finishall = ChooseMenu( mapped, entwin, ignore, ChildSide );
 					if ( entwin && (*entwin != m->PullWin) )	isEnd = True;
 				}
 				else if( m && ((tmp_menu != m) || (Event.xcrossing.window == m->LabelWin)) ) {
@@ -651,7 +651,7 @@ void press_menu( MenuLabel *m )
 							MENUB_H-1, True );
 				}
 				else if( Event.xcrossing.window==mapped->PullWin ){
-					isEnd = ChoiseMenu( mapped, &entwin, ignore, Side );
+					isEnd = ChooseMenu( mapped, &entwin, ignore, Side );
 					if ( entwin && (entwin == Scr.MenuBar) ) {
 						UnmapMenu( mapped, UNMAP_ALL );
 						mapped = NULL;
